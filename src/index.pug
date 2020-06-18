@@ -9,32 +9,35 @@ html(lang="en")
 		script(defer src="https://use.fontawesome.com/991e61a5a1.js")
 		script(defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js")
 		script(defer src="js/main.js")
-		title Change ME!
+		title MediTech | Your Faux IT Products
 
 	body
 		header
 			.wrap.flex
-				h1.logo MediTech
-				nav
-					ul.navMain
-						li 
-							a(href="#") Services
+				.logoWrap.flex
+					img.logo(src="../static/images/logo.png", alt="")
+					h1 MediTech
+					.canHazBurger
+				nav.navMain
+					ul
 						li 
 							a(href="#")  Members
 						li 
-							a(href="#")  Blogs
+							a(href="#") Services
 						li 
 							a(href="#")  Contact
+						li 
+							a(href="#")  About
 
-		.hero
+		section.hero
 			.wrap
-				h2 Fluency Products for Medical Institutes
+				h2 Information Technology Products for Medical Institutes
 				.img
 					img(src="https://picsum.photos/700/400?random=0", alt="Medical")
 				i.fas.fa-chevron-circle-down
 
 		section.contactUs
-			h1 Contact Us for a free quote and consultation
+			h3 Contact Us for a free quote and consultation
 			button.btn.contact Contact Us
 
 		main
@@ -68,11 +71,17 @@ html(lang="en")
 						h3 item6
 						p Facilis ratione laboriosam beatae unde a consectetur neque praesentium accusamus non maxime esse quidem doloremque adipisci numquam sunt eaque aperiam temporibus, modi atque eligendi dignissimos rerum corporis dolorem. Praesentium, natus.
 		
-		section.podcasts
+		section.services
 			.wrap.flex
-				.box a box
-				.box a box
-				.box a box
+				.box 
+					h3 Hospitals
+					p Administration Staff
+				.box 
+					h3 Doctors
+					p Independent Practice
+				.box 
+					h3 Sign Up
+					p New members
 
 		section.feature
 			.wrap
@@ -81,8 +90,8 @@ html(lang="en")
 					img(src="https://picsum.photos/700/400?random=1", alt="Medical")
 		
 		section.newsletter
-			h1 Sign up for our Newsletter
-			button.btn.contact Sign Up
+			h3 Register for our Newsletter for news on all updates
+			button.btn.contact Register
 
 		section.testimonials
 			.wrap

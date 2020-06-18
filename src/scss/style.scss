@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap');
+
 //- //< Sassy settings
 $minWidthLg: 1000px;
 $minWidthMed: 800px;
@@ -6,8 +8,10 @@ $minWidthSml: 420px;
 //- //>Base settings
 :root {
 	--color: #c3dcff;
+	--colorAlpha: #c3dcff91;
 	--colorDark: #152d78;
 	--color2: #3772ff;
+	--color2Alpha: #3773ff81;
 }
 
 *,
@@ -24,6 +28,7 @@ body {
 	min-height: 100%;
 	margin: 0;
 	background: white;
+	font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -33,10 +38,13 @@ a {
 
 img {
 	max-width: 100%;
+	box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.5);
 	border-radius: 0.25rem;
 }
 
 ul {
+	margin: 0;
+	padding: 0;
 	list-style: none;
 }
 
@@ -44,20 +52,27 @@ h1,
 h2,
 h3 {
 	color: var(--colorDark);
+	font-family: 'Raleway', sans-serif;
+}
+
+h2,
+h3 {
+	letter-spacing: 0.1rem;
 }
 
 .btn {
-	padding: 0.5rem 1.5rem;
+	padding: 0.75rem 1.5rem;
 	color: white;
 	font-weight: bolder;
 	text-transform: uppercase;
 	background: var(--color2);
 	border: 1px solid var(--colorDark);
 	border-radius: 5px;
+	box-shadow: 0.75px 0.75px 1.5px 0.75px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
 	&:hover {
-		color: var(--color2);
+		color: var(--color);
 		background: var(--colorDark);
-		border: 1px solid var(--color2);
 	}
 }
 
@@ -66,8 +81,85 @@ h3 {
 	margin: 0 auto;
 }
 
-.center {
+.flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+header {
+	padding: 0 1rem;
+}
+
+.logoWrap,
+.navMain {
+	@media (max-width: $minWidthMed) {
+		width: 100%;
+		justify-self: center;
+		text-align: center;
+	}
+}
+
+.logo {
+	width: 35px;
+	height: 35px;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 0;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.canHazBurger {
+	width: 35px;
+}
+
+.navMain {
+	a {
+		padding: 5px 0;
+		color: var(--color2);
+		font-weight: bolder;
+		text-transform: uppercase;
+		&:hover {
+			color: var(--colorDark);
+			border-top: 3px solid var(--color2);
+		}
+	}
+	li {
+		padding: 1em;
+		display: inline-block;
+		text-align: center;
+		@media (max-width: $minWidthMed) {
+			display: block;
+		}
+	}
+}
+
+.hero {
 	text-align: center;
+	position: relative;
+	img {
+		box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.5);
+	}
+	i {
+		margin-top: 1rem;
+		color: var(--color);
+		font-size: 2rem;
+	}
+}
+
+.hero::after {
+	content: '';
+	width: 40%;
+	height: 120%;
+	position: absolute;
+	top: -20%;
+	right: 0;
+	border-radius: 0 0 0 4rem;
+	background: linear-gradient(180deg, white 1%, var(--color) 99%);
+	z-index: -99;
 }
 
 main {
@@ -87,7 +179,7 @@ main {
 }
 
 .cell {
-	min-height: 350px;
+	min-height: 400px;
 	padding: 3rem;
 	border-radius: 1rem;
 	background: white;
@@ -95,54 +187,6 @@ main {
 		color: var(--color2);
 		font-size: 4rem;
 	}
-}
-
-.flex {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-}
-
-.navMain {
-	a {
-		color: var(--color2);
-		font-weight: bolder;
-		text-transform: uppercase;
-		&:hover {
-			color: var(--colorDark);
-			border-bottom: 3px solid var(--color2);
-		}
-	}
-
-	li {
-		padding: 1em;
-		display: inline-block;
-	}
-}
-
-.hero {
-	text-align: center;
-	position: relative;
-	img {
-		box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.5);
-	}
-	i {
-		margin-top: 1rem;
-		color: var(--color);
-		font-size: 2rem;
-	}
-}
-
-.hero::after {
-	content: '';
-	width: 35%;
-	height: 120%;
-	position: absolute;
-	top: -20%;
-	right: 0;
-	border-radius: 0 0 0 4rem;
-	background: linear-gradient(180deg, white 1%, var(--color) 99%);
-	z-index: -99;
 }
 
 section {
@@ -155,17 +199,28 @@ section {
 	text-align: center;
 }
 
-.podcasts > .flex {
+.services > .flex {
 	justify-content: space-around;
 }
 
 .box {
-	width: 300px;
-	height: 150px;
+	min-width: 300px;
+	padding: 2rem;
 	margin: 2rem;
-	background: white;
-	border-radius: 1rem;
-	box-shadow: 0.5px 0.5px 1.5px 0.5px rgba(0, 0, 0, 0.5);
+	align-items: center;
+	text-transform: uppercase;
+	text-align: center;
+	background: var(--color2);
+	border-radius: 1rem 1rem 1rem 3rem;
+	cursor: pointer;
+	&:hover {
+		box-shadow: 0.5px 0.5px 1.5px 0.5px rgba(0, 0, 0, 0.5);
+		background: linear-gradient(45deg, white, var(--color2));
+	}
+	h3 {
+		color: var(--color);
+		text-shadow: 1px 1px 2px black;
+	}
 }
 
 .feature {
@@ -211,6 +266,5 @@ section {
 
 footer {
 	padding: 2rem;
-
 	text-align: center;
 }
