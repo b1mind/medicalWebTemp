@@ -90,6 +90,7 @@ h3 {
 
 header {
 	padding: 0 1rem;
+	position: relative;
 }
 
 .logoWrap,
@@ -109,14 +110,39 @@ header {
 }
 
 .hidden {
-	visibility: hidden;
+	display: inline-block;
+	visibility: visible;
+
+	@media (max-width: $minWidthMed) {
+		visibility: hidden;
+		display: none;
+	}
 }
 
 .canHazBurger {
-	width: 35px;
+	display: grid;
+	gap: 3px;
+	justify-content: center;
+	visibility: hidden;
+	@media (max-width: $minWidthMed) {
+		visibility: visible;
+		li {
+			width: 25px;
+			height: 3px;
+			background: var(--color2);
+		}
+	}
 }
 
 .navMain {
+	@media (max-width: $minWidthMed) {
+		position: absolute;
+		top: 70px;
+		left: 0;
+		background: linear-gradient(white, var(--color));
+		z-index: 999;
+	}
+
 	a {
 		padding: 5px 0;
 		color: var(--color2);
@@ -162,10 +188,45 @@ header {
 	z-index: -99;
 }
 
+.hero::before {
+	content: '\f58e';
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	color: var(--color);
+	font-family: 'Font Awesome 5 Free';
+	font-size: 10rem;
+	font-weight: 900;
+	z-index: -99;
+}
+
+.contactUs,
+.newsletter {
+	padding: 6rem;
+	position: relative;
+	text-align: center;
+}
+
+.contactUs::after {
+	@extend .hero::before;
+	content: '\f2a1';
+	right: 20px;
+	left: auto;
+}
+
+.newsletter::after {
+	@extend .contactUs::after;
+	content: '\f58d';
+}
+
 main {
 	padding: 1rem 2rem;
 	border-radius: 0 4rem 0 0;
 	background: linear-gradient(180deg, var(--color) 70%, white);
+}
+
+section {
+	margin: 2rem 0;
 }
 
 .grid {
@@ -187,16 +248,6 @@ main {
 		color: var(--color2);
 		font-size: 4rem;
 	}
-}
-
-section {
-	margin: 2rem 0;
-}
-
-.contactUs,
-.newsletter {
-	padding: 6rem;
-	text-align: center;
 }
 
 .services > .flex {
@@ -262,6 +313,10 @@ section {
 	p {
 		margin: 1rem 2px;
 	}
+}
+
+.testimonials h2 {
+	padding: 0 1rem;
 }
 
 footer {
